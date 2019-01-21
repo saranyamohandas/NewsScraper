@@ -5,17 +5,17 @@
 
                <div class="bs-calltoaction bs-calltoaction-warning">
                     <div class="row">
-                        <div class="col-md-9 cta-contents">
-                            <h1 class="cta-title">{{this.headline}}</h1>
+                        <div class="col-md-9 cta-contents" data-id={{this._id}}>
+                            <h1 class="cta-title" >{{this.headline}}</h1>
                             <div class="cta-desc">
                                 <p>{{this.description}}</p>
                                
                             </div>
                         </div>
-                        <div class="col-md-3 cta-button">
-                            <a href="#" class="btn btn-lg btn-block btn-warning">Save It!</a>
+                        <div class="col-md-3 cta-button saveIt">
+                            <a href="#" class="btn btn-lg btn-block btn-warning" >Save It!</a>
                         </div>
-                        <div class="col-md-3 cta-button">
+                        <div class="col-md-3 cta-button addNote">
                             <a href="#" class="btn btn-lg btn-block btn-warning">Add Note!</a>
                         </div>
                      </div>

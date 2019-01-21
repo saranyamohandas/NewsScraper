@@ -32,7 +32,20 @@ $(document).ready(function(){
   	})
   });
 
+  $(".saveIt").click(function(){
+    console.log($(this).prev().attr("data-id"));
+    var getThisId = $(this).prev().attr("data-id");
+    $.ajax("/saveArticle/" + getThisId,{
+      type: "PUT",
+      data : {saved : true}
+    }).then(function(){
+      location.reload();
+      console.log("One scrape cleared!")
+    })
 
+
+
+  })
 
 
 

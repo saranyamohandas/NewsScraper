@@ -76,6 +76,21 @@ router.delete("/deleteallscrape",function(req,res){
 
 })
 
+router.put("/saveArticle/:id",function(req,res){
+    console.log(req.body);
+    //console.log(req.body.saved);
+    db.Article.findOneAndUpdate({_id: req.params.id},{saved : true})
+    .then(function(dbArticles){
+        res.redirect("/");
+
+    }).catch(function(err){
+        console.log(err);
+        res.json(err);
+    })
+
+});
+
+
 
 
 

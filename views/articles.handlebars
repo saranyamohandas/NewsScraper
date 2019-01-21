@@ -38,7 +38,9 @@
 <div class="container">
             <div class="col-sm-12">
                 {{#each scrapes}}
-                {{>scrapes/scrapes-block}}
+                  {{#unless saved}}
+                    {{>scrapes/scrapes-block}}
+                  {{/unless}}
                 {{/each}}
 <!--
                 <div class="bs-calltoaction bs-calltoaction-success">
