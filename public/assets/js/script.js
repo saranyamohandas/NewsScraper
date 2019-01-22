@@ -1,11 +1,3 @@
-// $(document).ready(function () {
-// $('.navbar-light .dmenu').hover(function () {
-//         $(this).find('.sm-menu').first().stop(true, true).slideDown(150);
-//     }, function () {
-//         $(this).find('.sm-menu').first().stop(true, true).slideUp(105)
-//     });
-// });
-
 $(document).ready(function(){
     $("#newScrape").click(function(){
         // $.get("/newscrape",function(data,status){
@@ -75,12 +67,11 @@ $(document).ready(function(){
         console.log(getThisId);
         $.ajax("/articlenotes/" + getThisId,{
           type: "POST",
-          data : {saved : getSaved}
+          data : {comments : userNotes}
         }).then(function(){
-          location.reload();
-          console.log("One scrape cleared!")
+          //location.reload();
+          console.log("Note posted!")
     })
-
       });
     
 

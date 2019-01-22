@@ -88,6 +88,10 @@ router.delete("/deleteallscrape",function(req,res){
     db.Article.deleteMany({},function(err){
         if(err) throw err;
         res.end("Removed all articles!")
+    });
+    db.Note.deleteMany({},function(err){
+        if(err) throw err;
+        res.end("Removed all articles!")
     })
 
 })
@@ -113,13 +117,11 @@ router.put("/savestatus/:id",function(req,res){
 
 //articlenotes
 router.post("/articlenotes/:id",function(req,res){
-    //console.log(req.body);
-    //console.log(req.body.saved);
     
     
     console.log(req.body,req.params.id);
     db.Note.create(req.body).then(function(dbNote){
-    return db.Article.findOneAndUpdate({_id: req.params.id},{ note: dbNote._id }, { new: true });
+      return db.Article.findOneAndUpdate({_id: req.params.id},{ note: dbNote._id }, { new: true });
     
     }).then(function(dbArticle){
         console.log(dbArticle)
