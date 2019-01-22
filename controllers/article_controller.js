@@ -59,15 +59,13 @@ router.get("/newscrape",function(req,res){
   console.log("scrapes length",scrapes.length);
   db.Article.insertMany(scrapes).then(function(dbArticle){
     console.log("new scrapes saved!");
-    res.redirect("/")
-    // res.json(dbArticle)
+    res.json(dbArticle)
         // res.send("Scrape Complete");
         
     }).catch(function(err){
         console.log(err);
     });
 
-     
 
 }).catch(function(err){
     console.log(err)
