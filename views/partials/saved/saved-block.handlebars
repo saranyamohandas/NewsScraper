@@ -1,0 +1,101 @@
+<div class="container">
+        <div class="col-sm-12">
+
+               <div class="bs-calltoaction bs-calltoaction-success">
+                    <div class="row">
+                        <div class="col-md-9 cta-contents" >
+                            <h2 class="cta-title" >{{this.headline}}</h2>
+                            <div class="cta-desc">
+                                <p>{{this.description}}</p>
+                               
+                            </div>
+                        </div>
+                        <div class="col-md-3 cta-button userAction" data-id={{this._id}} data-save-status="false">
+                            <a href="#" class="btn btn-md btn-block btn-success">Delete from Saved</a>
+                            
+                        </div>
+                        <div class="col-md-3 cta-button noteModal" data-id = {{this._id}}>
+                            <a href="#" class="btn btn-md btn-block btn-success" data-toggle="modal" data-target="#myModal"  >Add Note</a>
+                            {{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button> --}}
+
+                           {{!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Open modal
+</button> --}}
+                        </div>
+                     </div>
+                </div> 
+        </div>
+    </div>
+    <!-- Button to Open the Modal -->
+{{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Open modal
+</button> --}}
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" >
+        <p id="artId">Notes</p>
+        <ul>
+            <li>No Notes for this article yet!</li>
+        </ul>
+
+       <form>
+           <div class="form-group">
+            <label for="message-text" class="col-form-label" >New Notes:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="addNotes">Save</button>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+    {{!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div> --}}

@@ -9,13 +9,13 @@ var db = require("../models");
 //mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
 
 router.get("/",function(req,res){
-    db.Article.find({}).then(function(dbArticle){
+    db.Article.find({saved:false}).then(function(dbArticle){
         //console.log(dbArticle);
-        var hbsobject = {
+        var unsaved = {
             scrapes : dbArticle
         };
         //console.log("dbarticle",dbArticle)
-        res.render("articles",hbsobject);
+        res.render("articles",unsaved);
     }).catch(function(err){
         console.log(err.message);
     })
@@ -23,21 +23,37 @@ router.get("/",function(req,res){
         
 });
 
+router.get("/savedarticles",function(req,res){
+    db.Article.find({saved:true}).then(function(dbArticle){
+        //console.log(dbArticle);
+        var savedArticle = {
+            scrapes : dbArticle
+        };
+        //console.log("dbarticle",dbArticle)
+        res.render("articles",savedArticle);
+    }).catch(function(err){
+        console.log(err.message);
+    })
+
+
+
+})
+
 router.get("/newscrape",function(req,res){
     // console.log("url",req.originalUrl);
     axios.get("https://www.washingtonpost.com/").then(function(response){   
-        var $ = cheerio.load(response.data);
+        var ch = cheerio.load(response.data);
         var scrapes = [];
         //var dataAttr = $("div").attr("data-feature-id");
         //console.log($("div").attr("data-feature-id").child)
         // data-pb-content-id
-  $(".headline").each(function(i, element) {
+  ch(".headline").each(function(i, element) {
 
     // var title = $(dataAttr.headline).text();
     // var link = $(element).find("a").attr("href");
     var newArticle = {}
-    newArticle.headline = $(element).text();
-    newArticle.description = $(element).next().text();
+    newArticle.headline = ch(element).text();
+    newArticle.description = ch(element).next().text();
     //console.log(newArticle);
     scrapes.push(newArticle);
     // db.Article.create(newArticle).then(function(dbArticle){
@@ -76,10 +92,15 @@ router.delete("/deleteallscrape",function(req,res){
 
 })
 
-router.put("/saveArticle/:id",function(req,res){
+router.put("/savestatus/:id",function(req,res){
     console.log(req.body);
     //console.log(req.body.saved);
-    db.Article.findOneAndUpdate({_id: req.params.id},{saved : true})
+    var dbUpdateSave = { saved : true};
+    if(req.body.saved == "false"){
+        dbUpdateSave.saved = false;
+    }
+    console.log(req.body.saved,req.params.id);
+    db.Article.findOneAndUpdate({_id: req.params.id},dbUpdateSave)
     .then(function(dbArticles){
         res.redirect("/");
 
@@ -89,6 +110,27 @@ router.put("/saveArticle/:id",function(req,res){
     })
 
 });
+
+//articlenotes
+router.post("/articlenotes/:id",function(req,res){
+    //console.log(req.body);
+    //console.log(req.body.saved);
+    
+    
+    console.log(req.body,req.params.id);
+    db.Note.create(req.body).then(function(dbNote){
+    return db.Article.findOneAndUpdate({_id: req.params.id},{ note: dbNote._id }, { new: true });
+    
+    }).then(function(dbArticle){
+        console.log(dbArticle)
+    }).catch(function(err){
+        console.log(err);
+        res.json(err);
+    })
+});
+    
+
+
 
 
 

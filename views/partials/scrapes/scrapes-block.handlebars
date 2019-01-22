@@ -3,21 +3,21 @@
 <div class="container">
         <div class="col-sm-12">
 
-               <div class="bs-calltoaction bs-calltoaction-warning">
+               <div class="bs-calltoaction bs-calltoaction-info">
                     <div class="row">
-                        <div class="col-md-9 cta-contents" data-id={{this._id}}>
-                            <h1 class="cta-title" >{{this.headline}}</h1>
+                        <div class="col-md-9 cta-contents" >
+                            <h2 class="cta-title" >{{this.headline}}</h2>
                             <div class="cta-desc">
                                 <p>{{this.description}}</p>
                                
                             </div>
                         </div>
-                        <div class="col-md-3 cta-button saveIt">
-                            <a href="#" class="btn btn-lg btn-block btn-warning" >Save It!</a>
+                        <div class="col-md-3 cta-button userAction" data-id={{this._id}} data-save-status="true">
+                            <a href="#" class="btn btn-md btn-block btn-info" style="color: #fff">Save It</a>
                         </div>
-                        <div class="col-md-3 cta-button addNote">
-                            <a href="#" class="btn btn-lg btn-block btn-warning">Add Note!</a>
-                        </div>
+                        {{!-- <div class="col-md-3 cta-button addNote">
+                            <a href="#" class="btn btn-lg btn-block btn-warning">Add Note</a>
+                        </div> --}}
                      </div>
                 </div> 
         </div>
