@@ -8,9 +8,10 @@ $(document).ready(function(){
         $.ajax("/newscrape",{
         	type: "GET"
         }).then(function(data){
-        	console.log("newscrape")
-            console.log(data)
-        	//location.reload();
+        	console.log("newscrape");
+          // location.reload = "/";
+            // (data)
+        	document.location.reload(true);
 
         })
     });
