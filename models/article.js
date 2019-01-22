@@ -5,7 +5,10 @@ var ArticleSchema = new Schema({
 
 	headline : {
 		type: String,
+		index: true,
+		unique : true,
 		required : true
+		
 	},
 	description : {
 		type : String,
