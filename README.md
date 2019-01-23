@@ -30,7 +30,7 @@
 * Below is the snapshot of the application -
 
 
-  ![newsscraper](https://raw.githubusercontent.com/saranyamohandas/burger/master/public/assets/images/app.png)
+  ![newsscraper](https://raw.githubusercontent.com/saranyamohandas/NewsScraper/master/public/assets/images/newspaperUI.png)
 
 
 Below are links to app -
