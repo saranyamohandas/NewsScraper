@@ -14,6 +14,9 @@ var ArticleSchema = new Schema({
 		type : String,
 		//required : true
 	},
+	url: {
+		type : String
+	},
 	saved : {
 		type: Boolean,
 		default : false

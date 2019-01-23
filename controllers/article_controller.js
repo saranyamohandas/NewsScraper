@@ -51,6 +51,7 @@ router.get("/newscrape",function(req,res){
     var newArticle = {}
     newArticle.headline = ch(element).text();
     newArticle.description = ch(element).next().text();
+    newArticle.url = ch(element).find("a").attr("href");
    
     scrapes.push(newArticle);
     
