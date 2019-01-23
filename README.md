@@ -1,4 +1,4 @@
-                                  ###NewsScraper
+                             NewsScraper
 
 
 ### Overview of the application -
