@@ -46,18 +46,18 @@ $(document).ready(function(){
   $(".delArticle").click(function(){
     //console.log($(this).attr("data-id"));
     var getThisId = $(this).attr("data-id");
-    var getSaved = $(this).attr("data-save-status")
-    console.log(getThisId,getSaved);
-    console.log($(this).parents("#newsBlock"));
+    //var getSaved = $(this).attr("data-save-status")
+    //console.log(getThisId,getSaved);
+    //console.log($(this).parents("#newsBlock"));
     $(this).parents("#savedBlock").remove();
     //$(this).parent().parent().remove();
-    // $.ajax("/savestatus/" + getThisId,{
-    //   type: "PUT",
-    //   data : {saved : getSaved}
-    // }).then(function(){
-    //   location.reload();
-    //   console.log("One scrape cleared!")
-    // })
+    $.ajax("/deleteonescrape/" + getThisId,{
+      type: "DELETE",
+      data : {id : getThisId}
+    }).then(function(){
+      location.reload();
+      console.log("One scrape cleared!")
+    })
 
   })
 

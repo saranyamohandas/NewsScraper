@@ -85,6 +85,18 @@ router.delete("/deleteallscrape",function(req,res){
         res.end("Removed all articles!")
     })
 
+});
+
+router.delete("/deleteonescrape/:id",function(req,res){
+    db.Article.findByIdAndDelete(req.params.id,function(err){
+        if(err) throw err;
+        res.end("Removed selected article!")
+    });
+    // db.Note.deleteMany({},function(err){
+    //     if(err) throw err;
+    //     res.end("Removed all articles!")
+    // })
+
 })
 
 router.put("/savestatus/:id",function(req,res){
