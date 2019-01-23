@@ -30,6 +30,9 @@ $(document).ready(function(){
     var getThisId = $(this).attr("data-id");
     var getSaved = $(this).attr("data-save-status")
     console.log(getThisId,getSaved);
+    console.log($(this).parents("#newsBlock"));
+    $(this).parents("#newsBlock").remove();
+    //$(this).parent().parent().remove();
     $.ajax("/savestatus/" + getThisId,{
       type: "PUT",
       data : {saved : getSaved}
@@ -37,6 +40,24 @@ $(document).ready(function(){
       location.reload();
       console.log("One scrape cleared!")
     })
+
+  })
+
+  $(".delArticle").click(function(){
+    //console.log($(this).attr("data-id"));
+    var getThisId = $(this).attr("data-id");
+    var getSaved = $(this).attr("data-save-status")
+    console.log(getThisId,getSaved);
+    console.log($(this).parents("#newsBlock"));
+    $(this).parents("#savedBlock").remove();
+    //$(this).parent().parent().remove();
+    // $.ajax("/savestatus/" + getThisId,{
+    //   type: "PUT",
+    //   data : {saved : getSaved}
+    // }).then(function(){
+    //   location.reload();
+    //   console.log("One scrape cleared!")
+    // })
 
   })
 
