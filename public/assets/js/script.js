@@ -9,9 +9,10 @@ $(document).ready(function(){
         	type: "GET"
         }).then(function(data){
         	console.log("newscrape");
-          // location.reload = "/";
+          //location.reload = "/";
             // (data)
-        	document.location.reload(true);
+            window.location.href = "/";
+        	//document.location.reload(true);
 
         })
     });
@@ -81,17 +82,38 @@ $(document).ready(function(){
   //submit modal form
       $("#addNotes").on("click",function(event){
         event.preventDefault();
-        //console.log($(this).parents().parent());
-        var userNotes = $("#message-text").val().trim();
+         var userNotes = $("#message-text").val().trim();
         var getThisId = $("#artId").attr("data-id");
+        $("#defaultNote").remove();
+        var newList = $("<li>");
+        newList.text(userNotes);
+
+        $("#noteList").append(newList);
+
         $("#message-text").val("");
         console.log(userNotes);
         console.log(getThisId);
+        //console.log($(this).parents().parent());
+        //var userNotes = $(this).$("#message-text").val().trim();
+       //  var userNotes = $(this).siblings(".form-group").find(".addNotes").val().trim();
+       //  //var userNotes = $(this).attr("class",).val().trim();
+       //  var getThisId = $("#artId").attr("data-id");
+
+       // // $(this).$(".defaultNote").remove();
+       // var targetList = $(this).parent().siblings(".noteList");
+       //  var newList = $("<li>");
+       //  newList.text(userNotes);
+
+       //  targetList.append(newList);
+
+       //  $(this).siblings(".form-group").find(".addNotes").val("");
+       //  console.log(userNotes);
+       //  console.log(getThisId);
         $.ajax("/articlenotes/" + getThisId,{
           type: "POST",
           data : {comments : userNotes}
         }).then(function(){
-          location.reload();
+          //location.reload();
           console.log("Note posted!")
     })
       });

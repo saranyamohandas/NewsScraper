@@ -54,19 +54,28 @@ router.get("/newscrape",function(req,res){
     newArticle.url = ch(element).find("a").attr("href");
    
     scrapes.push(newArticle);
-    
 
-});
-  console.log("scrapes length",scrapes.length);
-  db.Article.insertMany(scrapes).then(function(dbArticle){
-    console.log("new scrapes saved!");
+    db.Article.create(newArticle).then(function(dbArticle){
+    //console.log("new scrapes saved!");
     //res.json(dbArticle)
-    res.send("Scrape Complete");
+    //res.send("Scrape Complete");
         
     }).catch(function(err){
         console.log(err);
     });
+    
 
+});
+  console.log("scrapes length",scrapes.length);
+  // db.Article.insertMany(scrapes).then(function(dbArticle){
+  //   console.log("new scrapes saved!");
+  //   //res.json(dbArticle)
+  //   res.send("Scrape Complete");
+        
+  //   }).catch(function(err){
+  //       console.log(err);
+  //   });
+ res.send("Scrape Complete");
 
 }).catch(function(err){
     console.log(err)
@@ -131,7 +140,8 @@ router.post("/articlenotes/:id",function(req,res){
     }).catch(function(err){
         console.log(err);
         res.json(err);
-    })
+    });
+    res.send("POST request for notes");
 });
     
 
